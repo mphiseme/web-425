@@ -1,2 +1,6 @@
 # web-425
-Works using Angular with TypeScript
+Angular with TypeScript course
+# WEB 420 Angular with TypeScript
+# Contributors
+* Robert Kumar
+* Manel Phiseme

@@ -1,0 +1,38 @@
+<!--
+ Title: Exercise 1.5 - Profile app
+ Author: Professor Krasso
+ Date: 23 October 2022
+ Modified By: Manel Phiseme
+ Description: This program demonstrate using Angular
+-->
+<nav >
+  <ul class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <li class="navbar-nav activ">
+      <a class="nav-link" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Contact Us</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <br/> <br/>
+  <!-- bellow code gets the value from variable
+    (assignment)in app.component.ts -->
+  <h2>{{assignment}}</h2>
+  <br /><br />
+  <div class="row">
+    <div class="col-sm-3">
+      <!--Directiv for app-my-image-->
+      <app-my-image></app-my-image>
+    </div>
+    <div class="col-sm-5">
+      <!--Directiv for app-my-details-->
+      <app-my-details></app-my-details>
+    </div>
+  </div>
+</div>

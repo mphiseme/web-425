@@ -1,3 +1,9 @@
+/**
+ * Title: app.module.ts
+ * Author: Manel Phiseme
+ * Date: 6 November 2022
+ * Description: Composer list component
+ */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 

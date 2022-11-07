@@ -1,7 +1,13 @@
+/**
+ * Title: composer.class.ts
+ * Author: Manel Phiseme
+ * Date: 6 November 2022
+ * Description: Enhanced composer
+ */
 import { IComposer } from "./composer.interface";
 
-export default class Composer {
-  composers: Array<IComposer>
+export class Composer {
+  composers: Array<IComposer>;
 
   constructor() {
     this.composers = [
@@ -13,13 +19,15 @@ export default class Composer {
     ]
   }
   getComposers(){
-
+    return this.composers;
   }
-  getComposer(composerId: number){
-    for(let composer of this.composers){
+
+  getComposer(composerId: number) : IComposer{
+    for (let composer of this.composers){
       if (composer.composerId === composerId){
         return composer;
       }
     }
+    return {} as IComposer
   }
 }

@@ -1,6 +1,12 @@
+/**
+ * Title: composer-list.component.ts
+ * Author: Manel Phiseme
+ * Date: 4 November 2022
+ * Description: Composer list component
+ */
 import { Component, OnInit } from '@angular/core';
-
-
+import { IComposer } from '../composer.interface';
+import {Composer} from '../composer.class';
 
 @Component({
   selector: 'app-composer-list',
@@ -8,16 +14,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./composer-list.component.css']
 })
 export class ComposerListComponent implements OnInit {
-  composers: Array<Composer>;
+  composers: Array<IComposer>;
 
   constructor() {
-    this.composers = [
-      new Composer("Johann Sebastian Bach", "classical"),
-      new Composer("Hildegard von Bingen", "classical"),
-      new Composer("George Frideric Handel", "classical"),
-      new Composer("Claude Debussy", "classical"),
-      new Composer("Joseph Haydn", "classical")
-    ]
+    this.composers = new Composer().getComposers();
   }
 
   ngOnInit(): void {

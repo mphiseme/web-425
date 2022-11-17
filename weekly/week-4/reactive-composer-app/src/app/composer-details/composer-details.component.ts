@@ -1,12 +1,12 @@
 /**
  * Title: composer-details.component.ts
  * Author: Manel Phiseme
- * Date: 30 October 2022
+ * Date: 13 November 2022
  * Description: Composer list component
  */
 import { Component, OnInit } from '@angular/core';
 import { IComposer } from '../composer.interface';
-import { Composer } from '../composer.class';
+import { ComposerService } from '../composer.service';
 import { ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -16,16 +16,15 @@ import { ActivatedRoute} from '@angular/router';
 })
 export class ComposerDetailsComponent implements OnInit {
   composerId: number;
-
   composer: IComposer;
 
-  constructor(private route: ActivatedRoute) {
-    this.composerId = parseInt(this.route.snapshot.paramMap.get('composerId')?? "0", 10);
+  constructor(private route: ActivatedRoute, private composerService: ComposerService) {
 
-    if(this.composerId){
+    //gets composer ID from path value
+    this.composerId = parseInt(this.route.snapshot.paramMap.get('composerId')?? '0', 10);
 
-    }
-    this.composer = new Composer().getComposer(this.composerId);
+     // sets composer to selected composer from id number above
+        this.composer = this.composerService.getComposer(this.composerId)
   }
 
   ngOnInit(): void {

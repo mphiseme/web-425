@@ -6,7 +6,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { IComposer } from '../composer.interface';
-import { Composer } from '../composer.class';
+import { ComposerService } from '../composer.service';
 import { ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -16,16 +16,14 @@ import { ActivatedRoute} from '@angular/router';
 })
 export class ComposerDetailsComponent implements OnInit {
   composerId: number;
-
   composer: IComposer;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private composerService: ComposerService) {
+      //gets composer ID from path value
     this.composerId = parseInt(this.route.snapshot.paramMap.get('composerId')?? "0", 10);
 
-    if(this.composerId){
-
-    }
-    this.composer = new Composer().getComposer(this.composerId);
+     // composer is set to selected composer from id number above
+    this.composer = this.composerService.getComposer(this.composerId)
   }
 
   ngOnInit(): void {

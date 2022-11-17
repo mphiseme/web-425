@@ -1,0 +1,28 @@
+<!--
+ Title: contact.component.html
+ Author: Professor Krasso
+ Date: 31 October 2022
+ Modified By: Manel Phiseme
+ Description: Angular CLI -composer
+-->
+
+<div class="row center-block">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr style="background-color: #343a40; color: #fff;">
+          <th>Composer ID</th>
+          <th>Full Name</th>
+          <th>Genre</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let composer of composers">
+        <tr>
+          <td><a routerLink="/composer-details/{{composer.composerId}}">{{ composer.composerId }}</a></td>
+          <td>{{ composer.fullName }}</td>
+          <td>{{composer.genre}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

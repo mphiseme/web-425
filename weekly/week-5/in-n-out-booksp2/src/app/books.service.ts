@@ -1,3 +1,10 @@
+/*
+Title: book.service.ts
+Author: Manel Phiseme
+Date: 21 November 2022
+Description: app module for books app
+*/
+
 import { Injectable } from '@angular/core';
 import {IBook} from './book.interface';
 import {Observable} from 'rxjs';

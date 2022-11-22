@@ -1,3 +1,10 @@
+/*
+Title: app-routing-module.ts
+Author: Manel Phiseme
+Date: 21 November 2022
+Description: routing module for books app
+*/
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookListComponent } from './book-list/book-list.component';

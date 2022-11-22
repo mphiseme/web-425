@@ -14,7 +14,7 @@ import { BookDetailsDialogComponent } from '../book-details-dialog/book-details-
 export class BookListComponent implements OnInit {
   books: Observable<IBook[]>;
   header: Array<string> = ['isbn', 'title', 'numOfPages', 'authors'];
-  //book: IBook;
+  book !: IBook;
 
   constructor(private booksService: BooksService, private dialog: MatDialog) {
     this.books = this.booksService.getBooks();
@@ -25,15 +25,26 @@ export class BookListComponent implements OnInit {
   }
 
   showBookDetails(isbn: string){
-   // this.book = this.booksService.getBook(isbn) ;
-//console.log(this.book);
+    this.book = this.booksService.getBook(isbn) ;
+console.log(this.book);
 const dialogRef = this.dialog.open(BookDetailsDialogComponent, {
   data: {
-  //  book: this.book
+   book: this.book
   },
   disableClose: true,
   width: '800px'
 })
+dialogRef.afterClosed().subscribe(result => {
+  if (result === 'confirm') {
+   this.book.isbn = "";
+   this.book.authors = [];
+   this.book.description = "";
+   this.book.title = "";
+   this.book.numOfPages = 0;
+     }
+
+ });
   }
+
 
 }

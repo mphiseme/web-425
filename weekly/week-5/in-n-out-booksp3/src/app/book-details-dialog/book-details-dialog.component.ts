@@ -15,9 +15,9 @@ import { IBook } from '../book.interface';
   styleUrls: ['./book-details-dialog.component.css']
 })
 export class BookDetailsDialogComponent implements OnInit {
-  //book: IBook;
-  constructor(private dialogRef: MatDialogRef<BookDetailsDialogComponent>, ) {
-   //this.book = data.book;
+  book !: IBook;
+  constructor(private dialogRef: MatDialogRef<BookDetailsDialogComponent>, @Inject(MAT_DIALOG_DATA) data:any){
+   this.book = data.book;
    }
 
   ngOnInit(): void {

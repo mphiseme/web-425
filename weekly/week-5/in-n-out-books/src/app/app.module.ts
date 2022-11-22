@@ -1,3 +1,9 @@
+/*
+Title: app.module.ts
+Author: Manel Phiseme
+Date: 21 November 2022
+Description: app module for books app
+*/
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 

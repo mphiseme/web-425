@@ -1,3 +1,9 @@
+/*
+Title: contact.component.ts
+Author: Manel Phiseme
+Date: 21 November 2022
+Description: contact component for books app
+*/
 import { Component, OnInit } from '@angular/core';
 
 @Component({

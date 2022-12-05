@@ -1,3 +1,9 @@
+/*
+Title: sign-in.component.ts
+Author: Manel Phiseme
+Date: 4 December 2022
+Description: home component for gpa app
+*/
 import { Component, OnInit } from '@angular/core';
 import { SignInService } from '../sign-in.service';
 import {Router} from '@angular/router';

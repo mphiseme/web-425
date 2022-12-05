@@ -1,3 +1,9 @@
+<!--
+Title: sign-in.component.html
+Author: Manel Phiseme
+Date: 4 December 2022
+Description: home component for gpa app
+-->
 <div fxLayout="column">
   <mat-card fxFlex class="mat-elevation-z8 signin-container">
     <mat-card-title>Student Sign In</mat-card-title>
@@ -7,7 +13,6 @@
       <div class="msg-error" *ngIf="errorMessage">
         {{errorMessage}}
       </div>
-
 
     <mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutGaps="10px">
       <form [formGroup]="signinForm"

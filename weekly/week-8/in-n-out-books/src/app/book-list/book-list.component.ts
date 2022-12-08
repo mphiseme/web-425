@@ -1,10 +1,3 @@
-/**
- * Title: book-list.component.ts
- * Author: Manel Phiseme
- * Date: 20 November 2022
- * Description: Composer list component
- */
-
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
 import { IBook } from '../book.interface';
@@ -19,12 +12,30 @@ import { BookDetailsDialogComponent } from '../book-details-dialog/book-details-
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
-  books: Observable<IBook[]>;
-  header: Array<string> = ['isbn', 'title', 'numOfPages', 'authors'];
+  books: Array<IBook> = [];
   book !: IBook;
 
   constructor(private booksService: BooksService, private dialog: MatDialog) {
-    this.books = this.booksService.getBooks();
+    this.booksService.getBooks().subscribe(res => {
+      for(let key in res){
+        if(res.hasOwnProperty(key)){
+          let authors = [];
+          if (res[key].details.authors){
+            authors = res[key].details.authors.map(function(author){
+              return author.name
+            })
+          }
+
+          this.books.push({
+            isbn: res[key].details.isbn_13 ? res[key].details.isbn_13 : res[key].details.isbn_10,
+            title: res[key].details.title,
+            description: res[key].details.subtitle ? res[key].details.subtitle : 'N/A',
+            numOfPages: res[key].details.number_of_pages,
+            authors: authors
+          })
+        }
+      }
+    });
 
   }
 
@@ -32,7 +43,8 @@ export class BookListComponent implements OnInit {
   }
 
 showBookDetails(isbn: string){
-    this.book = this.booksService.getBook(isbn) ;
+  this.book = this.books.find(book => book.isbn === isbn);
+
 console.log(this.book);
 const dialogRef = this.dialog.open(BookDetailsDialogComponent, {
   data: {
@@ -41,6 +53,7 @@ const dialogRef = this.dialog.open(BookDetailsDialogComponent, {
   disableClose: true,
   width: '800px'
 })
+console.log(this.book);
 dialogRef.afterClosed().subscribe(result => {
   if (result === 'confirm') {
    this.book.isbn = "";
